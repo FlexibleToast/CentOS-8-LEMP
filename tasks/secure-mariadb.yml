@@ -24,8 +24,6 @@
 
 - name: remove test database
   mysql_db:
-    login_user: root
-    login_password: '{{ db_root_password }}'
     name: test
     state: absent
   notify: restart mariadb

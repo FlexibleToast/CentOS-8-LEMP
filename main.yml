@@ -1,6 +1,6 @@
 ---
 - name: Install and configure LEMP on CentOS 8
-  hosts: nextcloud-test #Change this be the hosts you require
+  hosts: hostname #Change this be the hosts you require
   become: yes
   vars:
     db_root_password: changeme #Change this password for your site
