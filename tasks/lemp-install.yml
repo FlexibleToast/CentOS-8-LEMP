@@ -1,0 +1,72 @@
+---
+- name: install lemp packages
+  yum:
+    name: '{{ item }}'
+    state: present
+  loop:
+  - nginx
+  - firewalld
+  - mariadb-server, mariadb, python3-PyMySQL
+  - php, php-mysqlnd, php-fpm, php-opcache, php-gd, php-xml, php-mbstring
+
+- name: start services
+  service:
+    name: '{{ item }}'
+    state: started
+    enabled: true
+  loop:
+  - nginx
+  - firewalld
+  - mariadb
+  - php-fpm
+
+- name: open http/https firewall ports
+  firewalld:
+    zone: public
+    service: '{{ item }}'
+    immediate: true
+    permanent: yes
+    state: enabled
+  loop:
+  - http
+  - https
+  notify: restart firewalld
+
+- name: make nginx owner of web directory
+  file:
+    path: /usr/share/nginx/html
+    recurse: yes
+    owner: nginx
+    group: nginx
+
+- name: change php user to nginx
+  lineinfile:
+    path: /etc/php-fpm.d/www.conf
+    regexp: '^{{ item.apache }}'
+    line: '{{ item.nginx }}'
+  loop:
+  - user:
+    apache: "user ="
+    nginx: "user = nginx"
+  - group: 
+    apache: "group ="
+    nginx: "group = nginx"
+  notify: restart php
+
+- name: list on unix socket not tcp/ip
+  lineinfile:
+    path: /etc/php-fpm.d/www.conf
+    regexp: "listen ="
+    line: "listen = /run/php-fpm/www.sock"
+    state: present
+  notify: restart php
+
+- name: create php test page
+  copy:
+    dest: /usr/share/nginx/html/info.php
+    content: "<?php phpinfo(); ?>"
+    owner: nginx
+    group: nginx
+  notify:
+  - restart nginx
+  - restart php

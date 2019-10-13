@@ -1,0 +1,21 @@
+---
+# Handlers for CentOS 8 Nextcloud install
+- name: restart firewalld
+  service:
+    name: firewalld
+    state: restarted
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
+
+- name: restart php
+  service:
+    name: php-fpm
+    state: restarted
+
+- name: restart mariadb
+  service:
+    name: mariadb
+    state: restarted
