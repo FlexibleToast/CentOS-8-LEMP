@@ -12,7 +12,7 @@ Two changes are required to be made to the main playbook `main.yml`
 
 1. Set the hostname of your server by changing `hostname` at the line:
    
-      - `hosts: hostname #Change this be the hosts you require`
+      - `hosts: hostname #Change this to the host you require`
 
 2. Set the root password for the MariaDB by changing `changeme` at the line:
          
