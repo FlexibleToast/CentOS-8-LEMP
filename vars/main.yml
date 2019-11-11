@@ -1,4 +1,4 @@
 ---
 # vars file for CentOS-8-LEMP
 # Database root user
-db_root_password: changeme #Change this password for your site
+db_root_password: changeme #Change this password for your database
