@@ -1,5 +1,5 @@
 ---
-# Handlers for CentOS 8 Nextcloud install
+# handlers file for centos8-lemp
 - name: restart firewalld
   service:
     name: firewalld
