@@ -1,4 +1,5 @@
 ---
-# vars file for CentOS-8-LEMP
+# defaults file for CentOS-8-Nextcloud
+
 # Database root user
 db_root_password: changeme #Change this password for your database

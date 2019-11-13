@@ -54,7 +54,7 @@
     nginx: "group = nginx"
   notify: restart php
 
-- name: list on unix socket not tcp/ip
+- name: listen on unix socket not tcp/ip
   lineinfile:
     path: /etc/php-fpm.d/www.conf
     regexp: "listen ="
