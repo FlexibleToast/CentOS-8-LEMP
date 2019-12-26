@@ -8,6 +8,6 @@ Nginx will serve from `/usr/share/nginx/html`. PHP will have a test page at `/us
 
 ## Required steps
 
-Set the root password for the MariaDB by changing `changeme` in the vars/main.yml at line:
+Set the root password for the MariaDB by changing `changeme` in the defaults/main.yml at line:
          
 `db_root_password: changeme #Change this password for your database`
