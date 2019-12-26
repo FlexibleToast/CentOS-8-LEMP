@@ -4,7 +4,7 @@ This Ansible playbook will install and configure all the necessary packages to c
 
 ## Configuration
 
-Nginx will serve from `/usr/share/nginx/html`. PHP will have a test page at `/usr/share/nginx/html/info.php` once you have confirmed it is working you should deletethe test page.
+Nginx will serve from `/usr/share/nginx/html`. PHP will have a test page at `/usr/share/nginx/html/info.php` once you have confirmed it is working you should delete the test page.
 
 ## Required steps
 
